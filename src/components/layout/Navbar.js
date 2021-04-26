@@ -20,7 +20,7 @@ const Navbar = () => {
             rel='noreferrer'
             style={{ color: 'grey' }}
           >
-            api.covid19india.org
+            covid19india.org
           </a>
         </p>
       </div>

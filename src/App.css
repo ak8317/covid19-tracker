@@ -188,8 +188,8 @@ img {
   grid-gap: 1rem;
 }
 .col-title {
-  font-weight: bold;
-  font-size: 1.01rem;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 .col {
   padding: 3rem;
