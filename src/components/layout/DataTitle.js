@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import Moment from 'react-moment';
 import DataContext from '../../context/dataContext';
-
+import Spinner from './Spinner';
 const DataTitle = () => {
   const dataContext = useContext(DataContext);
 
   const { currentState, loading } = dataContext;
 
   if (loading) {
-    return <h2>Loading..</h2>;
+    return <Spinner />;
   } else {
     return (
       <>

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import DataContext from '../../context/dataContext';
+import Spinner from './Spinner';
 
 const DataBox = () => {
   const dataContext = useContext(DataContext);
@@ -7,7 +8,7 @@ const DataBox = () => {
   const { currentState, loading } = dataContext;
 
   if (loading) {
-    return <h2>Loading..</h2>;
+    return <Spinner />;
   }
 
   const { confirmed, active, deaths, recovered } = currentState;

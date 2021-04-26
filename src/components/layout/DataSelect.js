@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import DataContext from '../../context/dataContext';
-import { NativeSelect, Select, FormControl } from '@material-ui/core';
-
+import { NativeSelect } from '@material-ui/core';
+import Spinner from './Spinner';
 const DataSelect = () => {
   const dataContext = useContext(DataContext);
 
@@ -9,7 +9,7 @@ const DataSelect = () => {
   const [state, setState] = useState('0');
 
   if (loading) {
-    return <h2>Loading..</h2>;
+    return <Spinner />;
   }
 
   const onChange = (e) => {
