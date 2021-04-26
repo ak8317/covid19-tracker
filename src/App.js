@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+import React, { useContext, useEffect } from 'react';
 import './App.css';
+import Navbar from './components/layout/Navbar';
+import DataTitle from './components/layout/DataTitle';
+import DataBox from './components/layout/DataBox';
+import DataSelect from './components/layout/DataSelect';
+import DataContext from './context/dataContext';
 
-function App() {
+const App = () => {
+  const dataContext = useContext(DataContext);
+
+  const { getData } = dataContext;
+
+  useEffect(() => {
+    getData();
+
+    //eslint-disable-next-line
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <div className='container'>
+        <DataTitle />
+        <DataBox />
+        <DataSelect />
+      </div>
+    </>
   );
-}
+};
 
 export default App;
