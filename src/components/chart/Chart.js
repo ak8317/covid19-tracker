@@ -5,7 +5,7 @@ import DataContext from '../../context/dataContext';
 const Chart = () => {
   const dataContext = useContext(DataContext);
   const { timeSeriesData } = dataContext;
-  const timeFormat = 'YYYY-MM';
+
   const changeFormat = (date) => {
     const d = new Date(date).toLocaleDateString('default', { month: 'long' });
     const y = new Date(date).getFullYear();

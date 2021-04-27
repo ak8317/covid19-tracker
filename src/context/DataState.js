@@ -1,9 +1,4 @@
-import {
-  GET_DATA,
-  SET_CURRENT_STATE,
-  SET_LOADING,
-  SET_TIME_DATA,
-} from './types';
+import { GET_DATA, SET_CURRENT_STATE, SET_LOADING } from './types';
 import React, { useReducer } from 'react';
 import DataContext from './dataContext';
 import DataReducer from './dataReducer';
