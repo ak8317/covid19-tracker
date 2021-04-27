@@ -178,8 +178,9 @@ img {
 /* Grid */
 .grid-2 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 3fr 1fr;
   grid-gap: 2rem;
+  height: 80%;
 }
 
 .grid-3 {

@@ -1,4 +1,9 @@
-import { GET_DATA, SET_CURRENT_STATE, SET_LOADING } from './types';
+import {
+  GET_DATA,
+  SET_CURRENT_STATE,
+  SET_LOADING,
+  SET_TIME_DATA,
+} from './types';
 import React, { useReducer } from 'react';
 import DataContext from './dataContext';
 import DataReducer from './dataReducer';
@@ -8,6 +13,7 @@ const DataState = (props) => {
   const initialState = {
     statesData: [],
     currentState: {},
+    timeSeriesData: [],
     loading: false,
   };
   const [state, dispatch] = useReducer(DataReducer, initialState);
@@ -20,10 +26,10 @@ const DataState = (props) => {
 
     dispatch({
       type: GET_DATA,
-      payload: res.data.statewise,
+      payload: res.data,
     });
+
     setCurrentState('Total');
-    //console.log(res.data.statewise);
   };
 
   //set currentState
@@ -51,6 +57,7 @@ const DataState = (props) => {
       value={{
         statesData: state.statesData,
         currentState: state.currentState,
+        timeSeriesData: state.timeSeriesData,
         loading: state.loading,
         getData,
         setCurrentState,

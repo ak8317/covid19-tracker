@@ -1,16 +1,21 @@
-import { GET_DATA, SET_CURRENT_STATE, SET_LOADING } from './types';
+import {
+  GET_DATA,
+  SET_CURRENT_STATE,
+  SET_LOADING,
+  SET_TIME_DATA,
+} from './types';
+import { monthConversion } from './monthConversion';
 
 const dataReducer = (state, action) => {
   switch (action.type) {
     case GET_DATA:
       return {
         ...state,
-        statesData: action.payload,
+        statesData: action.payload.statewise,
+        timeSeriesData: monthConversion(action.payload['cases_time_series']),
         loading: false,
       };
     case SET_CURRENT_STATE:
-      //console.log(action.payload);
-
       return {
         ...state,
         currentState: state.statesData.filter(

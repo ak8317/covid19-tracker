@@ -1,12 +1,7 @@
 import React from 'react';
-//import logo from '../../images/logo.png';
+import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
-    // <nav className='navbar bg-primary'>
-    //   <div className='all-center'>
-    //     <img src={logo} alt='' style={{ width: '300px' }} />
-    //   </div>
-    // </nav>
     <nav className='navbar bg-primary'>
       <div className='all-center'>
         <h1 className='title'>
@@ -24,6 +19,18 @@ const Navbar = () => {
           </a>
         </p>
       </div>
+      <ul>
+        <li>
+          <h3>
+            <Link to='/'>Home</Link>
+          </h3>
+        </li>
+        <li>
+          <h3>
+            <Link to='/graphs'>Graphs</Link>
+          </h3>
+        </li>
+      </ul>
     </nav>
   );
 };
