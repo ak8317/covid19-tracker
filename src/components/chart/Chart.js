@@ -32,6 +32,20 @@ const Chart = () => {
           },
         ],
       }}
+      options={{
+        plugins: {
+          zoom: {
+            pan: {
+              enabled: true,
+              mode: 'xy',
+            },
+            zoom: {
+              enabled: true,
+              mode: 'xy',
+            },
+          },
+        },
+      }}
     />
   );
   const lineChartDeath = (

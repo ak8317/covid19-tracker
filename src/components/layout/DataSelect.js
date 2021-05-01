@@ -1,16 +1,11 @@
 import React, { useState, useContext } from 'react';
 import DataContext from '../../context/dataContext';
-import { NativeSelect } from '@material-ui/core';
-import Spinner from './Spinner';
+
 const DataSelect = () => {
   const dataContext = useContext(DataContext);
 
-  const { statesData, loading, setCurrentState } = dataContext;
+  const { statesData, setCurrentState } = dataContext;
   const [state, setState] = useState('0');
-
-  if (loading) {
-    return <Spinner />;
-  }
 
   const onChange = (e) => {
     setState(e.target.value);
@@ -22,8 +17,14 @@ const DataSelect = () => {
     setCurrentState('Total');
   };
   return (
-    <div style={formStyle}>
-      <NativeSelect name='state' value={state} id='state' onChange={onChange}>
+    <div>
+      <select
+        className='form-select mt-10 block w-full border p-3 rounded'
+        name='state'
+        value={state}
+        id='state'
+        onChange={onChange}
+      >
         <option value='0' disabled>
           Select a State
         </option>
@@ -32,10 +33,10 @@ const DataSelect = () => {
             {state.state}
           </option>
         ))}
-      </NativeSelect>
+      </select>
       {state !== '0' && (
         <button
-          className='btn btn-light'
+          className='bg-blue-500 rounded p-3 mt-10 focus:outline-none hover:bg-blue-800'
           style={{ marginLeft: '1rem' }}
           onClick={clearBtn}
         >
@@ -44,10 +45,6 @@ const DataSelect = () => {
       )}
     </div>
   );
-};
-
-const formStyle = {
-  marginTop: '2rem',
 };
 
 export default DataSelect;

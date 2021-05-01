@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import DataContext from '../../context/dataContext';
-import Spinner from './Spinner';
 
 function formatNumber(value) {
   var val = Math.abs(value);
@@ -16,38 +15,37 @@ function formatNumber(value) {
 const DataBox = () => {
   const dataContext = useContext(DataContext);
 
-  const { currentState, loading } = dataContext;
-
-  if (loading) {
-    return <Spinner />;
-  }
+  const { currentState } = dataContext;
 
   const { confirmed, active, deaths, recovered } = currentState;
 
   return (
     <>
-      <div className='grid-4'>
-        <div className='col'>
-          <span className='col-title'>Confirmed</span>
-          <div className='cases' style={{ color: '#ff3324' }}>
+      <div className='grid md:grid-cols-4 gap-4'>
+        <div className='shadow-md bg-blue-100 p-10 text-center rounded'>
+          <div className='text-2xl text-blue-900 font-bold mb-4'>Confirmed</div>
+          <div className='text-3xl mb-4' style={{ color: '#ff3324' }}>
             {formatNumber(confirmed)}
           </div>
         </div>
-        <div className='col'>
-          <span className='col-title'>Active </span>
-          <div className='cases' style={{ color: '#ffbf00' }}>
+        <div className='shadow-md bg-blue-100 p-10 text-center rounded'>
+          <div className='text-2xl text-blue-900 font-bold mb-4'>Active </div>
+          <div className='text-3xl mb-4' style={{ color: '#ffbf00' }}>
             {formatNumber(active)}
           </div>
         </div>
-        <div className='col'>
-          <span className='col-title'> Recovered </span>
-          <div className='cases' style={{ color: '#1cb55d' }}>
+        <div className='shadow-md bg-blue-100 p-10 text-center rounded'>
+          <div className='text-2xl text-blue-900 font-bold mb-4'>
+            {' '}
+            Recovered{' '}
+          </div>
+          <div className='text-3xl mb-4' style={{ color: '#1cb55d' }}>
             {formatNumber(recovered)}
           </div>
         </div>
-        <div className='col'>
-          <span className='col-title'>Deaths</span>{' '}
-          <div className='cases' style={{ color: 'silver' }}>
+        <div className='shadow-md bg-blue-100 p-10 text-center rounded'>
+          <div className='text-2xl text-blue-900 font-bold mb-4'>Deaths</div>{' '}
+          <div className='text-3xl mb-4' style={{ color: 'silver' }}>
             {formatNumber(deaths)}
           </div>
         </div>

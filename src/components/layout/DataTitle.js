@@ -1,33 +1,26 @@
 import React, { useContext } from 'react';
 import Moment from 'react-moment';
 import DataContext from '../../context/dataContext';
-import Spinner from './Spinner';
+
 const DataTitle = () => {
   const dataContext = useContext(DataContext);
 
-  const { currentState, loading } = dataContext;
+  const { currentState } = dataContext;
 
-  if (loading) {
-    return <Spinner />;
-  } else {
-    return (
-      <>
-        <div
-          className='all-center'
-          style={{ marginBottom: '2rem', marginTop: '1rem' }}
-        >
-          <h2 className='text-center' style={{ fontWeight: 'bold' }}>
-            {currentState.state && currentState.state === 'Total'
-              ? 'India'
-              : currentState.state}
-          </h2>
-          <Moment format='MMMM Do YYYY,h:mm:ss a'>
-            {Date(currentState.lastupdatedtime)}
-          </Moment>
-        </div>
-      </>
-    );
-  }
+  return (
+    <div className='text-center'>
+      <h2 className='text-3xl font-bold'>
+        {currentState.state && currentState.state === 'Total'
+          ? 'India'
+          : currentState.state}
+      </h2>
+      <div className='text-2xl mt-4 mb-10'>
+        <Moment format='MMMM Do YYYY,h:mm:ss a'>
+          {Date(currentState.lastupdatedtime)}
+        </Moment>
+      </div>
+    </div>
+  );
 };
 
 export default DataTitle;
