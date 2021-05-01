@@ -7,6 +7,7 @@ import Home from './components/Home';
 import CountryContext from './context/country/countryContext';
 import Country from './components/country';
 import './assets/output.css';
+
 const App = () => {
   const dataContext = useContext(DataContext);
   const countryContext = useContext(CountryContext);
@@ -25,7 +26,7 @@ const App = () => {
       <Router>
         <Navbar />
         <Switch>
-          <div className='container'>
+          <div className='container mb-10 mx-auto'>
             <Route exact path='/' component={Home} />
             <Route exact path='/countries' component={Country} />
             <Route exact path='/graphs' component={Chart} />
