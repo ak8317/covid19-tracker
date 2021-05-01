@@ -1,20 +1,36 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import DataContext from '../../context/dataContext';
 
 const DataSelect = () => {
   const dataContext = useContext(DataContext);
 
-  const { statesData, setCurrentState } = dataContext;
+  const {
+    statesData,
+    setCurrentState,
+    setBtn,
+    btnState,
+    clearBtnState,
+    currentState,
+  } = dataContext;
   const [state, setState] = useState('0');
 
+  useEffect(() => {
+    if (currentState.state !== 'Total') {
+      setState(currentState.state);
+    }
+
+    //eslint-disable-next-line
+  }, [state]);
   const onChange = (e) => {
     setState(e.target.value);
     setCurrentState(e.target.value);
+    setBtn();
   };
 
   const clearBtn = () => {
     setState('0');
     setCurrentState('Total');
+    clearBtnState();
   };
   return (
     <div>
@@ -34,7 +50,7 @@ const DataSelect = () => {
           </option>
         ))}
       </select>
-      {state !== '0' && (
+      {btnState && (
         <button
           className='bg-blue-500 rounded p-3 mt-10 focus:outline-none hover:bg-blue-800'
           style={{ marginLeft: '1rem' }}

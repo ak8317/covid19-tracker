@@ -66,9 +66,12 @@ const Chart = () => {
 
   return (
     <>
-      <div className='grid-chart'>
+      <h2 className='text-center font-bold text-3xl  '>
+        Rise of Cases in India
+      </h2>
+      <div className='grid md:grid-cols-2 gap-4'>
         <div>{lineChart}</div>
-        <div style={{ marginTop: '2rem' }}>{lineChartDeath}</div>
+        <div>{lineChartDeath}</div>
       </div>
     </>
   );

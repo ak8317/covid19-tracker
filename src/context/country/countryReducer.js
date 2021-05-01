@@ -1,8 +1,9 @@
 import {
   GET_COUNTRIES_DATA,
-  GET_COUNTRY,
   SET_LOADING,
   CURRENT_COUNTRY,
+  SET_BTN,
+  CLEAR_BTN,
 } from '../types';
 
 const countryReducer = (state, action) => {
@@ -29,6 +30,16 @@ const countryReducer = (state, action) => {
           )[0],
         };
       }
+    case SET_BTN:
+      return {
+        ...state,
+        btnState: true,
+      };
+    case CLEAR_BTN:
+      return {
+        ...state,
+        btnState: false,
+      };
     case SET_LOADING:
       return {
         ...state,

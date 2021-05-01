@@ -1,8 +1,9 @@
 import {
   GET_COUNTRIES_DATA,
-  GET_COUNTRY,
   SET_LOADING,
   CURRENT_COUNTRY,
+  SET_BTN,
+  CLEAR_BTN,
 } from '../types';
 import CountryContext from './countryContext';
 import CountryReducer from './countryReducer';
@@ -13,7 +14,7 @@ const CountryState = (props) => {
   const initialState = {
     countriesData: {},
     currentCountry: {},
-
+    btnState: false,
     loading: false,
   };
   const [state, dispatch] = useReducer(CountryReducer, initialState);
@@ -39,7 +40,17 @@ const CountryState = (props) => {
       payload: country,
     });
   };
-
+  //set btn
+  const setBtn = () => {
+    dispatch({
+      type: SET_BTN,
+    });
+  };
+  const clearBtnState = () => {
+    dispatch({
+      type: CLEAR_BTN,
+    });
+  };
   //set loading
   const setLoading = () => {
     dispatch({
@@ -53,8 +64,11 @@ const CountryState = (props) => {
         countriesData: state.countriesData,
         currentCountry: state.currentCountry,
         loading: state.loading,
+        btnState: state.btnState,
         getCountriesData,
         setCurrentCountry,
+        setBtn,
+        clearBtnState,
       }}
     >
       {props.children}

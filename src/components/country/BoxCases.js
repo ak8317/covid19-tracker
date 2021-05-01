@@ -15,7 +15,7 @@ function formatNumber(value) {
 
 const BoxCases = () => {
   const countryContext = useContext(CountryContext);
-  const { currentCountry, countriesData } = countryContext;
+  const { currentCountry } = countryContext;
 
   return (
     <div className='grid md:grid-cols-3 gap-4'>
@@ -23,13 +23,13 @@ const BoxCases = () => {
         <h3 className='text-3xl text-blue-900 font-bold mb-4'>Cases</h3>
         <div className='text-2xl mb-4'>
           New:{' '}
-          <span className='font-bold'>
+          <span className='font-bold text-red-500'>
             {formatNumber(currentCountry.NewConfirmed)}
           </span>
         </div>
         <div className='text-2xl mb-4'>
           Total:{' '}
-          <span className='font-bold'>
+          <span className='font-bold text-red-700'>
             {formatNumber(currentCountry.TotalConfirmed)}
           </span>
         </div>
@@ -38,13 +38,13 @@ const BoxCases = () => {
         <h3 className='text-3xl text-blue-900 font-bold mb-4'>Recovered</h3>
         <div className='text-2xl mb-4'>
           New:
-          <span style={{ fontWeight: 'bold' }}>
+          <span className='font-bold text-green-500'>
             {formatNumber(currentCountry.NewRecovered)}
           </span>
         </div>
         <div className='text-2xl mb-4'>
           Total:{' '}
-          <span style={{ fontWeight: 'bold' }}>
+          <span className='font-bold text-green-700'>
             {formatNumber(currentCountry.TotalRecovered)}
           </span>
         </div>
@@ -53,13 +53,13 @@ const BoxCases = () => {
         <h3 className='text-3xl text-blue-900 font-bold mb-4'>Deaths</h3>
         <div className='text-2xl mb-4'>
           New:{' '}
-          <span style={{ fontWeight: 'bold' }}>
+          <span className='font-bold text-gray-400'>
             {formatNumber(currentCountry.NewDeaths)}
           </span>
         </div>
         <div className='text-2xl mb-4'>
           Total:{' '}
-          <span style={{ fontWeight: 'bold' }}>
+          <span className='font-bold text-gray-500'>
             {formatNumber(currentCountry.TotalDeaths)}
           </span>
         </div>

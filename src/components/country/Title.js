@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import Moment from 'react-moment';
-import Spinner from '../layout/Spinner';
 import CountryContext from '../../context/country/countryContext';
 
 const Title = () => {

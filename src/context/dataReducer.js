@@ -1,4 +1,10 @@
-import { GET_DATA, SET_CURRENT_STATE, SET_LOADING } from './types';
+import {
+  GET_DATA,
+  SET_CURRENT_STATE,
+  SET_LOADING,
+  CLEAR_BTN,
+  SET_BTN,
+} from './types';
 import { monthConversion } from './monthConversion';
 
 const dataReducer = (state, action) => {
@@ -18,7 +24,16 @@ const dataReducer = (state, action) => {
         )[0],
         loading: false,
       };
-
+    case SET_BTN:
+      return {
+        ...state,
+        btnState: true,
+      };
+    case CLEAR_BTN:
+      return {
+        ...state,
+        btnState: false,
+      };
     case SET_LOADING:
       return {
         ...state,

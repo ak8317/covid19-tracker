@@ -1,4 +1,10 @@
-import { GET_DATA, SET_CURRENT_STATE, SET_LOADING } from './types';
+import {
+  GET_DATA,
+  SET_CURRENT_STATE,
+  SET_LOADING,
+  SET_BTN,
+  CLEAR_BTN,
+} from './types';
 import React, { useReducer } from 'react';
 import DataContext from './dataContext';
 import DataReducer from './dataReducer';
@@ -9,6 +15,7 @@ const DataState = (props) => {
     statesData: [],
     currentState: {},
     timeSeriesData: [],
+    btnState: false,
     loading: false,
   };
   const [state, dispatch] = useReducer(DataReducer, initialState);
@@ -39,7 +46,17 @@ const DataState = (props) => {
     //console.log(state);
   };
 
-  //set State
+  //set btn
+  const setBtn = () => {
+    dispatch({
+      type: SET_BTN,
+    });
+  };
+  const clearBtnState = () => {
+    dispatch({
+      type: CLEAR_BTN,
+    });
+  };
 
   //set loading
   const setLoading = () => {
@@ -54,8 +71,11 @@ const DataState = (props) => {
         currentState: state.currentState,
         timeSeriesData: state.timeSeriesData,
         loading: state.loading,
+        btnState: state.btnState,
         getData,
         setCurrentState,
+        setBtn,
+        clearBtnState,
       }}
     >
       {props.children}

@@ -1,17 +1,34 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import CountryContext from '../../context/country/countryContext';
 const SelectBox = () => {
   const countryContext = useContext(CountryContext);
   const [selected, setSelected] = useState('');
-  const { countriesData, setCurrentCountry } = countryContext;
+  const {
+    countriesData,
+    setCurrentCountry,
+    setBtn,
+    clearBtnState,
+    btnState,
+    currentCountry,
+  } = countryContext;
+
+  useEffect(() => {
+    if (currentCountry.hasOwnProperty('Country') !== false) {
+      setSelected(currentCountry.Country);
+    }
+
+    //eslint-disable-next-line
+  }, [selected]);
 
   const onChange = (e) => {
     setSelected(e.target.value);
     setCurrentCountry(e.target.value);
+    setBtn();
   };
   const clearBtn = () => {
     setSelected('');
     setCurrentCountry('Global');
+    clearBtnState();
   };
   return (
     <div>
@@ -33,7 +50,7 @@ const SelectBox = () => {
             </option>
           ))}
       </select>
-      {selected !== '' && (
+      {btnState && (
         <button
           className='bg-blue-500 rounded p-3 mt-10 focus:outline-none hover:bg-blue-800'
           style={{ marginLeft: '1rem' }}
